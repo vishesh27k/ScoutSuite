@@ -49,7 +49,7 @@ class StorageAccountsFacade:
         try:
             client = self.get_client(subscription_id)
             blob_services = await run_concurrently(
-                lambda: list(client.blob_services.list(resource_group_name, storage_account_name))
+                # lambda: list(client.blob_services.list(resource_group_name, storage_account_name))
             )
 
         except Exception as e:
