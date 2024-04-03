@@ -1,7 +1,6 @@
 import datetime
 from azure.mgmt.monitor import MonitorManagementClient
 from azure.mgmt.storage import StorageManagementClient
-
 from ScoutSuite.core.console import print_exception
 from ScoutSuite.providers.utils import run_concurrently, get_and_set_concurrently
 from ScoutSuite.utils import get_user_agent
@@ -36,7 +35,7 @@ class StorageAccountsFacade:
         try:
             client = self.get_client(subscription_id)
             containers = await run_concurrently(
-                # lambda: list(client.blob_containers.list(resource_group_name, storage_account_name))
+                lambda: list(client.blob_containers.list(resource_group_name, storage_account_name))
             )
 
         except Exception as e:
