@@ -202,12 +202,12 @@ def pass_condition(b, test, a):
         b = dateutil.parser.parse(str(b)).replace(tzinfo=None)
         a = dateutil.parser.parse(str(a)).replace(tzinfo=None)
         result = (b < a)
-    # elif test == 'olderThan':
-    #     age, threshold = __prepare_age_test(a, b)
-    #     result = (age > threshold)
-    # elif test == 'newerThan':
-    #     age, threshold = __prepare_age_test(a, b)
-    #     result = (age < threshold)
+    elif test == 'olderThan':
+        age, threshold = __prepare_age_test(a, b)
+        result = (age > threshold)
+    elif test == 'newerThan':
+        age, threshold = __prepare_age_test(a, b)
+        result = (age < threshold)
 
     # CIDR tests
     elif test == 'inSubnets':
