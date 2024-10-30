@@ -173,41 +173,7 @@ def pass_condition(b, test, a):
                 result = True
                 break
 
-    # Regex tests
-    elif test == 'match':
-        if type(a) != list:
-            a = [a]
-        b = str(b)
-        for c in a:
-            if re.match(c, b):
-                result = True
-                break
-    elif test == 'matchInList':
-        if type(a) != list:
-            a = [a]
-        if type(b) !=list:
-            b = [b]
-        for c in a:
-            for d in b:
-                if re.match(c, d):
-                    result = True
-                    break
-            if result:
-                break
-    elif test == 'notMatch':
-        result = (not pass_condition(b, 'match', a))
 
-    # Date tests
-    elif test == 'priorToDate':
-        b = dateutil.parser.parse(str(b)).replace(tzinfo=None)
-        a = dateutil.parser.parse(str(a)).replace(tzinfo=None)
-        result = (b < a)
-    elif test == 'olderThan':
-        age, threshold = __prepare_age_test(a, b)
-        result = (age > threshold)
-    elif test == 'newerThan':
-        age, threshold = __prepare_age_test(a, b)
-        result = (age < threshold)
 
     # CIDR tests
     elif test == 'inSubnets':
